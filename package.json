@@ -1,6 +1,6 @@
 {
   "name": "mogambo-front-end",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Front end for Lagairogo  application.",
   "main": "server.js",
   "config": {
