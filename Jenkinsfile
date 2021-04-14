@@ -1,71 +1,40 @@
-pipeline {
-  agent none
-  stages {
-    stage('build') {
-      agent {
-        docker {
-          image 'lagairogo/node:4-alpine'
+pipeline{
+
+    agent any
+
+// uncomment the following lines by removing /* and */ to enable
+   tools{
+       nodejs 'nodejs' 
+    }
+   
+
+    stages{
+        stage('build'){
+            steps{
+                echo 'this is the build job'
+                sh 'npm install'
+            }
         }
-
-      }
-      steps {
-        echo 'this is the build job'
-        sh 'npm install'
-      }
-    }
-
-    stage('test') {
-      agent {
-        docker {
-          image 'lagairogo/node:4-alpine'
+        stage('test'){
+            steps{
+                echo 'this is the test job'
+                sh 'npm test'
+            }
         }
-
-      }
-      steps {
-        echo 'this is the test job'
-        sh '''npm install
-npm test'''
-      }
-    }
-
-    stage('package') {
-      agent {
-        docker {
-          image 'lagairogo/node:4-alpine'
+        stage('package'){
+            steps{
+                echo 'this is the package job'
+                sh 'npm run package'
+            }
         }
-
-      }
-      steps {
-        echo 'this is the package job'
-        sh '''npm install
-npm run package'''
-        archiveArtifacts '**/distribution/*.zip'
-      }
     }
-
-    stage('docker build and publish') {
-      agent any
-      steps {
-        script {
-          docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
-            def dockerImage = docker.build("lagairogo/shopping-portal:v${env.BUILD_ID}", "./")
-            dockerImage.push()
-            dockerImage.push("latest")
-          }
+    
+    post{
+        always{
+            echo 'this pipeline has completed...'
         }
-
-      }
+        
     }
-
-  }
-  tools {
-    nodejs 'nodejs'
-  }
-  post {
-    always {
-      echo 'this pipeline has completed...'
-    }
-
-  }
+    
 }
 
