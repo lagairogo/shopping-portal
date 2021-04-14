@@ -3,10 +3,10 @@ pipeline{
     agent any
 
 // uncomment the following lines by removing /* and */ to enable
-    tools{
-       NodeJS "NodeJS" 
+     tools{
+       nodejs 'nodejs' 
     }
-    
+   
 
     stages{
         stage('build'){
@@ -15,13 +15,13 @@ pipeline{
                 sh 'npm install'
             }
         }
-        stage('test'){
+        stage('two'){
             steps{
                 echo 'this is the test job'
                 sh 'npm test'
             }
         }
-        stage('package'){
+        stage('three'){
             steps{
                 echo 'this is the package job'
                 sh 'npm run package'
