@@ -9,7 +9,7 @@ Front-end application written in [Node.js](https://nodejs.org/en/) that puts tog
 
 # Setting up Dev Env
 
-Platform : Ubuntu 18.04.05
+Platform : Ubuntu 18.04.04
 
 
 ### Common Setup
