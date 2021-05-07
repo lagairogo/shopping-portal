@@ -6,37 +6,30 @@ pipeline{
     tools{
        nodejs 'nodejs' 
     }
-   
+    
 
     stages{
-        stage('one'){
+        stage('build'){
             steps{
-                echo 'this is the first job'
-                sh 'uptime'
-                sleep 4
+                sh 'npm install'
             }
         }
-        stage('two'){
+        stage('test'){
             steps{
-                echo 'this is the second job'
-                sh 'uptime'
-                sleep 9
+                sh 'npm test'
             }
         }
-        stage('three'){
+        stage('package'){
             steps{
-                echo 'this is the third job'
-                sh 'uptime'
-                sleep 7
+                sh 'npm run package'
             }
         }
     }
     
     post{
         always{
-            echo 'this pipeline has completed...'
+            echo 'this pipeline is for shopping-portal application...'
         }
         
     }
     
-}
