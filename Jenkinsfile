@@ -24,8 +24,8 @@ pipeline {
 
     stage('Archive') {
       steps {
-        archiveArtifacts '**/distribution/*.zip'
         echo 'this is the archive job'
+        archiveArtifacts '**/distribution/*.zip'
       }
     }
 
