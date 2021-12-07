@@ -23,7 +23,7 @@ pipeline{
         stage('package'){
             steps{
                 echo 'this pipleline is the completed'
-                sh 'run package'
+                sh 'npm run package'
             }
         }
     }
