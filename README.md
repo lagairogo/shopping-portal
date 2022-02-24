@@ -9,15 +9,7 @@ Front-end application written in [Node.js](https://nodejs.org/en/) that puts tog
 
 # Setting up Dev Env
 
-Platform : Ubuntu 18.04.0
-
-
-### Common Setup
-```
-
-# Install Pre reqs
-sudo apt-get update  
-sudo apt-get install git wget curl build-essential -yq
+Platform : Ubuntu 18.04..................................................................6url build-essential -yq
 
 # Install Nodejs with NPM
 cd /tmp
