@@ -25,7 +25,7 @@ pipeline{
         stage('package-the-app'){
             steps{
                 echo 'this is the third job'
-                sh 'npn run package'
+                sh 'npm run package'
                 }
         }
     }
