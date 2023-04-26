@@ -1,38 +1,41 @@
-pipeline{
-
-    agent any
-
-    tools{
-       	nodejs ‘nodejs’
+pipeline {
+  agent any
+  stages {
+    stage('build') {
+      steps {
+        echo 'this is the build job'
+        sh 'npm install'
+      }
     }
-    
 
-    stages{
-        stage(‘build’){
-            steps{
-                echo 'this is the build job'
-                sh ’npm install’
-            }
-        }
-        stage(‘test’){
-            steps{
-                echo 'this is the test job'
-                sh ’npm test’
-            }
-        }
-        stage(‘package’){
-            steps{
-                echo 'this is the package job'
-                sh ’npm run package’
-            }
-        }
+    stage('test') {
+      steps {
+        echo 'this is the test job'
+        sh 'npm test'
+      }
     }
-    
-    post{
-        always{
-            echo 'this pipeline has completed for Shopping Portal.’
-        }
-        
+
+    stage('package') {
+      steps {
+        echo 'this is the package job'
+        sh 'npm run package'
+      }
     }
-    
+
+    stage('artifact') {
+      steps {
+        archiveArtifacts '**/distribution/*.zip'
+      }
+    }
+
+  }
+  tools {
+    nodejs 'nodejs'
+  }
+  post {
+    always {
+      echo 'this pipeline has completed...'
+    }
+
+  }
 }
