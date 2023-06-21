@@ -4,7 +4,7 @@ pipeline{
 
 // uncomment the following lines by removing /* and */ to enable
     tools{
-       nojejs 'nodejs'
+       nodejs 'nodejs'
     }
 
     stages{
