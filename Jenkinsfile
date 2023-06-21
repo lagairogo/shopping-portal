@@ -1,41 +1,36 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Build') {
       steps {
-        echo 'this is the build the app job'
+        echo 'this is to build the app'
         sh 'npm install'
       }
     }
-
-    stage('test') {
+    stage('Test') {
       steps {
-        echo 'this is the test the app job'
+        echo 'this is to test the app'
         sh 'npm test'
       }
     }
-
-    stage('package') {
+    stage('Package') {
       steps {
-        echo 'this is the package app job'
+        echo 'this is to package the app'
         sh 'npm run package'
       }
     }
-
     stage('Archive') {
       steps {
         archiveArtifacts '**/distribution/*.zip'
       }
     }
-
   }
   tools {
     nodejs 'nodejs'
   }
   post {
     always {
-      echo 'Hello this is my first pipeline...'
+      echo 'Hello There...This is my first pipeline through code...'
     }
-
   }
 }
